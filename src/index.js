@@ -4,15 +4,15 @@ function generateColors() {
     for (let i = 0; i < 150; i++) {
         let lightnessBase, lightnessUnique;
         
-        if (i < 50) {
+        if (i < 75) {
             lightnessBase = 75; // High contrast
             lightnessUnique = 65;
-        } else if (i < 100) {
+        } else if (i < 125) {
             lightnessBase = 55; // Medium contrast
             lightnessUnique = 50;
         } else {
-            lightnessBase = 40; // Low contrast
-            lightnessUnique = 36;
+            lightnessBase = 39; // Low contrast
+            lightnessUnique = 35;
         }
 
         const hue = Math.random() * 360; // Random hue
