@@ -558,7 +558,7 @@ function generateMap() {
 
 function setUpGame() {
 
-    if (localStorage.getItem('high-score'))
+    if (!localStorage.getItem('high-score'))
         localStorage.setItem('high-score', 0)
 
     generateMap();
