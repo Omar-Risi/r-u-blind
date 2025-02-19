@@ -113,3 +113,8 @@ main {
     background: #000a;
 
 }
+h2 {
+    font-size: 2rem;
+    color: white;
+    z-index: 15;
+}

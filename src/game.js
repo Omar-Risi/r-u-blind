@@ -46,12 +46,12 @@ function openModal(title, content) {
 
 let uniqueButton;
 
-function lose() {
+function lose(title) {
 
     const highScore = localStorage.getItem('high-score');
 
     const modalContent = (score > highScore) ? `congrats! you set a new highscore of ${score}\n your old highscore is ${highScore}` : `Highscore ${highScore}`
-    openModal("you lose", modalContent);
+    openModal(title, modalContent);
 
     if (score > highScore)
         localStorage.setItem('high-score', score);
@@ -64,7 +64,7 @@ function generateButton(isUnique) {
         elm.setAttribute('unique', "");
     }
     else {
-        elm.onclick = () => { lose() }
+        elm.onclick = () => { lose("Wrong choice!") }
     }
 
     return elm;

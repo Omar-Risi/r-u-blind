@@ -9,7 +9,7 @@ let currentScene = menuScreen;
 
 function switchScene(newScene) {
 
-    if(newScene == gameScreen)
+    if (newScene == gameScreen)
         gameScreen.style.cssText = "background-image: url('./src/ancelotti.jpeg');"
 
     currentScene.setAttribute('hidden', '');
@@ -18,11 +18,24 @@ function switchScene(newScene) {
 }
 
 function setUp() {
-    gameScreen.setAttribute('hidden','')
+    gameScreen.setAttribute('hidden', '')
 }
 
 setUp()
 
-startButton.onclick = () => {switchScene(gameScreen)}
+let time = 60;
+startButton.onclick = () => {
+    switchScene(gameScreen);
 
-resetButton.onclick = () => {window.location.reload()}
+    let interval = setInterval(() => {
+        document.querySelector("#time-left").textContent = --time + "s"
+
+
+        if (time == 0) {
+            lose("Out of time!")
+            clearInterval(interval)
+        }
+    }, 1000)
+}
+
+resetButton.onclick = () => { window.location.reload() }
