@@ -7,40 +7,34 @@
     <style>
         * {padding:0;margin:0;}
         body {
-            display:flex; height:100vh; justify-content:center; align-items:center;
+            display:flex; height:100vh; justify-content:center; align-items:center; flex-direction: column;
             background-color: #232323;
         }
+        h1 {font-family: sans-serif; color: #f2f2f2;}
         main {
-            height: 50vh; aspect-ratio: 1/1;
-            display: flex; flex-wrap:wrap; flex-direction:row; gap: 1%;
-            animation: pop 0.5s infinite;
+            width: 30vw; aspect-ratio: 1/1; margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 3%;
+            animation: pop 0.5s;
         }
+
         .game-button {
-            width: 30%; aspect-ratio: 1/1;
             border:transparent; border-radius: 100%; margin:3px;
             cursor: pointer; 
             transition: ease-in-out 150ms;
+            background-color: var(--base);
         }
+
+        .game-button[unique] {background-color: var(--unique)}
 
         @keyframes pop {
             from {scale: 0;}
             to {scale:1}
         }
     </style>
+    <script src="./src/index.js" defer></script>
 </head>
 <body>
-    <main>
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-        <button class="game-button"></button>
-    </main>
+    <h1 id="score"> 0 </h1>
+    <main id="game-map"></main>
 </body>
 </html>
