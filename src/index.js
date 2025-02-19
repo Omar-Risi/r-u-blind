@@ -1,44 +1,29 @@
 const colors = [
-    { base: "#6f6", unique: "#3a3" },
-    { base: "#7f7", unique: "#4b4" },
-    { base: "#8f8", unique: "#5c5" },
-    { base: "#9f9", unique: "#6d6" },
-    { base: "#afa", unique: "#7e7" },
-    { base: "#bfb", unique: "#8f8" },
-    { base: "#cfc", unique: "#9g9" },
-    { base: "#dfd", unique: "#ah0" },
-    { base: "#efe", unique: "#bi1" },
-    { base: "#fff", unique: "#cj2" },
-    { base: "#f6f", unique: "#d3d" },
-    { base: "#e6e", unique: "#c2c" },
-    { base: "#d6d", unique: "#b1b" },
-    { base: "#c6c", unique: "#a0a" },
-    { base: "#b6b", unique: "#9f9" },
-    { base: "#a6a", unique: "#8e8" },
-    { base: "#969", unique: "#7d7" },
-    { base: "#868", unique: "#6c6" },
-    { base: "#767", unique: "#5b5" },
-    { base: "#666", unique: "#4a4" },
-    { base: "#565", unique: "#393" },
-    { base: "#464", unique: "#282" },
-    { base: "#363", unique: "#171" },
-    { base: "#262", unique: "#060" },
-    { base: "#161", unique: "#050" },
-    { base: "#060", unique: "#040" },
-    { base: "#050", unique: "#030" },
-    { base: "#040", unique: "#020" },
-    { base: "#030", unique: "#010" },
-    { base: "#020", unique: "#000" },
-    { base: "#010", unique: "#fff" },
-    { base: "#000", unique: "#eee" },
-    { base: "#111", unique: "#ddd" },
-    { base: "#222", unique: "#ccc" },
-    { base: "#333", unique: "#bbb" },
-    { base: "#444", unique: "#aaa" },
-    { base: "#555", unique: "#999" },
-    { base: "#666", unique: "#888" },
-    { base: "#777", unique: "#777" },
-    { base: "#888", unique: "#666" }
+    {base: "#ff0000", unique: "#cc0000"},
+    {base: "#00ff00", unique: "#00cc00"},
+    {base: "#0000ff", unique: "#0000cc"},
+    {base: "#ffff00", unique: "#cccc00"},
+    {base: "#ff00ff", unique: "#cc00cc"},
+    {base: "#00ffff", unique: "#00cccc"},
+    {base: "#ff8000", unique: "#cc6600"},
+    {base: "#8000ff", unique: "#6600cc"},
+    {base: "#ff0080", unique: "#cc0066"},
+    {base: "#80ff00", unique: "#66cc00"},
+    {base: "#0080ff", unique: "#0066cc"},
+    {base: "#80ff80", unique: "#66cc66"},
+    {base: "#ff8080", unique: "#cc6666"},
+    {base: "#8080ff", unique: "#6666cc"},
+    {base: "#ffff80", unique: "#cccc66"},
+    {base: "#ff80ff", unique: "#cc66cc"},
+    {base: "#80ffff", unique: "#66cccc"},
+    {base: "#ffcc00", unique: "#cc9900"},
+    {base: "#cc00ff", unique: "#9900cc"},
+    {base: "#00ffcc", unique: "#00cc99"},
+    {base: "#ccff00", unique: "#99cc00"},
+    {base: "#00ccff", unique: "#0099cc"},
+    {base: "#ff0066", unique: "#cc0052"},
+    {base: "#66ff00", unique: "#52cc00"},
+    {base: "#0066ff", unique: "#0052cc"}
 ];
 
 const map = document.querySelector('#game-map');
@@ -48,7 +33,14 @@ let score=0;
 let uniqueButton;
 
 function lose() {
-    alert("BOT delete game")
+    const highscore = localStorage.getItem('high-score');
+    if(score > highscore) {
+        localStorage.setItem('high-score', score)
+        alert('يا لعيب يا قناص')
+        alert(`رقمك القياسي الجديد ${score} والقديم لما كنت بوت ${highscore}`)
+    }
+    
+
     window.location.reload();
 }
 
@@ -70,6 +62,8 @@ function win() {
 }
 
 function generateMap() {
+    map.classList.add('pop')
+    setTimeout( () => {map.classList.remove('pop')}, 505)
     const uniqueIndex = Math.floor(Math.random() * 9);
     const colorGroup = colors[Math.floor(Math.random() * colors.length)];
     map.innerHTML=""
@@ -82,6 +76,13 @@ function generateMap() {
     }
 }
 
+function setUpGame() {
+    
+    if(localStorage.getItem('high-score')) 
+        localStorage.setItem('high-score', 0)
 
-generateMap();
+    generateMap();
+}
 
+
+setUpGame()
