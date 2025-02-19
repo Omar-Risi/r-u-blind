@@ -46,8 +46,9 @@ function openModal(title, content) {
 
 let uniqueButton;
 
-function lose(title) {
+function lose(title, interval) {
 
+    clearInterval(interval)
     const highScore = localStorage.getItem('high-score');
 
     const modalContent = (score > highScore) ? `congrats! you set a new highscore of ${score}\n your old highscore is ${highScore}` : `Highscore ${highScore}`

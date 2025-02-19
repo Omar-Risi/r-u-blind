@@ -32,8 +32,7 @@ startButton.onclick = () => {
 
 
         if (time == 0) {
-            lose("Out of time!")
-            clearInterval(interval)
+            lose("Out of time!", interval)
         }
     }, 1000)
 }
