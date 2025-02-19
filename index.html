@@ -4,87 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Are you colorblind </title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-image:url(./src/ancelotti.jpeg) ;
-            background-size: cover;
-            background-position: center;
-        }
-
-        h1 {
-            font-family: sans-serif;
-            color: #f2f2f2;
-        }
-
-        main {
-            width: 30vw;
-            aspect-ratio: 1/1;
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3%;
-        }
-
-        @media (width < 1024px) {
-            main {
-                width: 80vw; 
-            }
-        }
-
-        .game-button {
-            border: transparent;
-            border-radius: 100%;
-            margin: 3px;
-            cursor: pointer;
-            transition: ease-in-out 150ms;
-            background-color: var(--base);
-        }
-
-        .game-button[unique] {
-            background-color: var(--unique)
-        }
-
-        .overlay {
-            background-color: #0009;
-            position:fixed; top: 0; left:0;
-            width:100vw;height:100vh;
-            z-index: 5;
-        }
-
-        #score,#game-map {z-index: 10;}
-
-        @keyframes pop {
-            0% {
-                scale: 0;
-            }
-
-            100% {
-                scale: 1
-            }
-        }
-
-        .pop {
-            animation: pop 0.5s forwards;
-        }
-    </style>
+    <title> Color chaser </title>
+    <link rel="stylesheet" href="./src/game.css">
+    <link rel="stylesheet" href="./src/menu.css">
+    <script src="./src/game.js" defer></script>
+    <script src="./src/navigator.js" defer></script>
 </head>
 
 <body>
+    <section class="menu" id="menu-screen">
+        <h1> Color Chaser </h1>
+        <button class="menu-button" id="start-button"> start game </button>
+        <p>made by <a href="https://instagram.com/omar-risi" target="_blank" rel="noopener noreferrer"> Omar al
+                Reesi</a></p>
+    </section>
+
+    <section class="game" id="game-screen" hidden>
+        <div class="overlay"></div>
+        <h1 id="score"> 0 </h1>
+        <main id="game-map"></main>
+    </section>
+
+
+    <section id="modal" class="modal-container" hidden>
+        <div class="modal" id="modal-box">
+        <h4 id="modal-title"> Dummy title </h4>
+        <p id="modal-content"> some modal content</p>
+        <button class="menu-button" id="reset-button"> Restart </button>
+        </div>
     <div class="overlay"></div>
-    <h1 id="score"> 0 </h1>
-    <main id="game-map"></main>
-    <script src="./src/index.js"></script>
+    </section>
 </body>
 
 </html>

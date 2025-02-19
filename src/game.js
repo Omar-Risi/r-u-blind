@@ -1,9 +1,9 @@
 function generateColors() {
     const colors = [];
-    
+
     for (let i = 0; i < 150; i++) {
         let lightnessBase, lightnessUnique;
-        
+
         if (i < 75) {
             lightnessBase = 75; // High contrast
             lightnessUnique = 65;
@@ -11,8 +11,8 @@ function generateColors() {
             lightnessBase = 55; // Medium contrast
             lightnessUnique = 50;
         } else {
-            lightnessBase = 39; // Low contrast
-            lightnessUnique = 35;
+            lightnessBase = 40; // Low contrast
+            lightnessUnique = 34;
         }
 
         const hue = Math.random() * 360; // Random hue
@@ -31,18 +31,30 @@ const map = document.querySelector('#game-map');
 const scoreElm = document.querySelector("#score");
 let score = 0;
 
+const modal = document.querySelector("#modal")
+
+function pop(elm) {
+    elm.classList.add('pop');
+    setTimeout(() => { elm.classList.remove('pop') }, 505)
+}
+function openModal(title, content) {
+    modal.removeAttribute('hidden');
+    document.querySelector("#modal-box").classList.add('pop')
+    document.querySelector('#modal-title').textContent = title;
+    document.querySelector('#modal-content').textContent = content;
+}
+
 let uniqueButton;
 
 function lose() {
-    const highscore = localStorage.getItem('high-score');
-    if (score > highscore) {
-        localStorage.setItem('high-score', score)
-        alert('يا لعيب يا قناص')
-        alert(`رقمك القياسي الجديد ${score} والقديم لما كنت بوت ${highscore}`)
-    }
 
+    const highScore = localStorage.getItem('high-score');
 
-    window.location.reload();
+    const modalContent = (score > highScore) ? `congrats! you set a new highscore of ${score}\n your old highscore is ${highScore}` : `Highscore ${highScore}`
+    openModal("you lose", modalContent);
+
+    if (score > highScore)
+        localStorage.setItem('high-score', score);
 }
 
 function generateButton(isUnique) {
@@ -60,6 +72,7 @@ function generateButton(isUnique) {
 
 function win() {
     scoreElm.textContent = ++score;
+    pop(scoreElm)
 }
 
 function generateMap() {
