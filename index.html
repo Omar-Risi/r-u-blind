@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Are you colorblind </title>
+    <style>
+        * {padding:0;margin:0;}
+        body {
+            display:flex; height:100vh; justify-content:center; align-items:center;
+            background-color: #232323;
+        }
+        main {
+            height: 50vh; aspect-ratio: 1/1;
+            display: flex; flex-wrap:wrap; flex-direction:row; gap: 1%;
+            animation: pop 0.5s infinite;
+        }
+        .game-button {
+            width: 30%; aspect-ratio: 1/1;
+            border:transparent; border-radius: 100%; margin:3px;
+            cursor: pointer; 
+            transition: ease-in-out 150ms;
+        }
+
+        @keyframes pop {
+            from {scale: 0;}
+            to {scale:1}
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+        <button class="game-button"></button>
+    </main>
+</body>
+</html>
