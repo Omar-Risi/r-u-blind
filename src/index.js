@@ -12,7 +12,7 @@ function generateColors() {
             lightnessUnique = 50;
         } else {
             lightnessBase = 40; // Low contrast
-            lightnessUnique = 38;
+            lightnessUnique = 36;
         }
 
         const hue = Math.random() * 360; // Random hue
